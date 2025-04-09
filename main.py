@@ -89,9 +89,9 @@ verificar_encabezados()
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     await update.message.reply_text(
-        f"👋 ¡Hola! Tu chat_id es: {chat_id}\n"
-        "Enviame un gasto así:\n`2500 supermercado compra del día`\n"
-        "y lo guardaré si la categoría es válida.\n\n"
+        #f"👋 ¡Hola! Tu chat_id es: {chat_id}\n"
+        "Poné el gasto así:\n`2500 supermercado compra del día`\n"
+        "y lo voy a guardar si la categoría es válida.\n\n"
         "📌 Categorías válidas:\n" + "\n".join(sorted(CATEGORIAS_VALIDAS))
     )
 
