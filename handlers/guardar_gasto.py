@@ -46,11 +46,11 @@ def guardar_gasto(usuario, texto, bot=None):
         settings.sheet.append_row([fecha, monto, categoria, descripcion, usuario])
 
         # 🔔 Notificar al otro usuario si el bot fue pasado
-        if bot and usuario in USUARIOS_TELEGRAM:
-            otros = [u for u in USUARIOS_TELEGRAM if u != usuario]
+        if bot and usuario in USUARIOS_TELEGRAM: #el usuario existe
+            otros = [u for u in USUARIOS_TELEGRAM if u != usuario] #Recorre todas las claves (nombres) del diccionario, y se queda con las que no son el nombre de quien mandó el gasto (usuario).
             if otros:
-                otro = otros[0]
-                chat_id = USUARIOS_TELEGRAM[otro]
+                otro = otros[0] #de la lista otros agarro Guido Q.
+                chat_id = USUARIOS_TELEGRAM[otro] #
                 texto_aviso = (
                     f"📢 {usuario} cargó un gasto:\n"
                     f"💰 ${monto:.2f} en *{categoria}*\n"

@@ -23,6 +23,16 @@ client = gspread.authorize(creds)
 # Acceso a la hoja
 sheet = client.open(SPREADSHEET_NAME).sheet1
 
+# === VERIFICAR ENCABEZADOS ===
+def verificar_encabezados():
+    encabezados = sheet.row_values(1)
+    esperados = ["Fecha", "Monto", "Categoría", "Descripción", "Usuario"]
+    if encabezados != esperados:
+        sheet.insert_row(esperados, 1)
+        print("✅ Encabezados corregidos.")
+
+verificar_encabezados()
+
 
 USUARIOS_TELEGRAM = {
     "Daniela M.": 5426240124,  # Reemplazá con tu chat_id real
