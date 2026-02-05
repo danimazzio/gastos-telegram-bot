@@ -12,7 +12,7 @@ load_dotenv()
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 
 # Nombre de la hoja de cálculo
-SPREADSHEET_NAME = "Gastos_telegram"
+SPREADSHEET_NAME = "Gastos_test_pareja"
 
 # Autenticación con Google Sheets
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
