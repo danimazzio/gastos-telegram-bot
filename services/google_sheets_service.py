@@ -33,6 +33,6 @@ def get_sheet(sheet_id: str):
     sheet = client.open_by_key(sheet_id)
     return sheet.sheet1
 
-def agregar_gasto(sheet_id: str, gasto: dict):
+def agregar_gasto(sheet_id: str, fila: list):
     ws = get_sheet(sheet_id)
-    ws.append_row([gasto["fecha"], gasto["categoria"], gasto["monto"]])
+    ws.append_row(fila)

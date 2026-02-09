@@ -2,20 +2,22 @@ import os
 import threading
 from flask import Flask
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, MessageHandler, filters, CommandHandler, ContextTypes
 from dotenv import load_dotenv
 
 
 # Importar handlers desde la carpeta handlers
 from handlers.start import start
-from handlers.gasto import gasto
-
+#from handlers.gasto import gasto
+from handlers.gasto_texto import gasto_texto
 
 # Cargar variables desde config/config.env
 load_dotenv("config/config.env")
 
 # Leemos el token desde una variable de entorno
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+#print("TOKEN QUE ESTÁ USANDO EL BOT:", TOKEN) -- para chequear token
 
 # ---- Flask para mantener Render despierto ----
 app_flask = Flask(__name__)
@@ -39,10 +41,12 @@ def main():
 
     # Bot Telegram
     app = ApplicationBuilder().token(TOKEN).build()
+    
 
     # Registrar handlers
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("gasto", gasto))
+    #app.add_handler(CommandHandler("gasto", gasto))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, gasto_texto))
 
     print("Bot iniciado…")
     app.run_polling()
