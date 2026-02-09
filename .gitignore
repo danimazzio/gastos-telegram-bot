@@ -3,6 +3,7 @@ venv/
 
 # Archivos de credenciales
 config/config.env
+config/config.dev.env
 
 # Archivos del sistema
 __pycache__/
